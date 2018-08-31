@@ -1,0 +1,33 @@
+const data = [
+  {
+    key: 'id',
+    name: 'ID',
+    type: 'number',
+    read: true,
+    write: false
+  },
+  {
+    key: 'title',
+    name: '标题',
+    type: 'string',
+    read: true,
+    write: true
+  },
+  {
+    key: 'description',
+    name: '描述',
+    type: 'string',
+    read: true,
+    write: true
+  },
+  {
+    key: 'created_at',
+    name: '创建时间',
+    type: 'date',
+    read: true,
+    write: false
+  }
+]
+
+
+

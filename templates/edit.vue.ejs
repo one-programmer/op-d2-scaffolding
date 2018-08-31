@@ -1,0 +1,77 @@
+<template>
+  <el-card>
+    <el-form :model="form" label-width="80px">
+      <% fields.forEach(function(field) { %>
+        <% if (field.write) { %>
+          <% if (field.type === 'datetime') { %>
+          <el-form-item label="<%= field.name %>">
+            <el-date-picker v-model="form.<%= field.key %>" type="datetime" placeholder="选择日期时间">
+            </el-date-picker>
+          </el-form-item>
+          <% } else { %>
+          <el-form-item label="<%= field.name %>">
+            <el-input v-model="form.<%= field.key %>"></el-input>
+          </el-form-item>
+          <% } %>
+        <% } %>
+      <% }) %>
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit">{{ editMode ? '保存': '添加' }}</el-button>
+        <el-button>取消</el-button>
+      </el-form-item>
+    </el-form>
+  </el-card>
+</template>
+<script>
+export default {
+  data () {
+    return {
+      id: this.$route.params.id,
+      editMode: this.$route.params.id !== undefined,
+      apiPath: '<%= apiPath %>',
+      form: {
+        name: '',
+        description: ''
+      }
+    }
+  },
+  created () {
+    console.log('editMode', this.editMode)
+    this.initForm()
+  },
+  methods: {
+    async initForm () {
+      if (this.editMode) {
+        console.log('fetch detail', this.id)
+        const result = await this.$axios({
+          method: 'get',
+          url: `${this.apiPath}/${this.id}`
+        })
+        this.form = result.data
+      }
+    },
+    async onSubmit () {
+      console.log('submit!')
+      if (this.editMode) {
+        await this.$axios({
+          method: 'put',
+          url: `${this.apiPath}/${this.id}`,
+          body: this.form
+        })
+      } else {
+        await this.$axios({
+          method: 'post',
+          url: this.apiPath,
+          body: this.form
+        })
+      }
+      this.$notify({
+        title: '成功',
+        message: `${this.editMode ? '保存' : '添加'}成功`,
+        type: 'success'
+      })
+      this.$router.go(-1)
+    }
+  }
+}
+</script>

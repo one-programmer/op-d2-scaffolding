@@ -1,0 +1,16 @@
+{
+  "name": "d2-scaffolding",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bohan",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.17.1",
+    "ejs": "^2.6.1",
+    "mkdirp": "^0.5.1"
+  }
+}
