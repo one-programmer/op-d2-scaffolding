@@ -1,33 +1,44 @@
-const data = [
-  {
-    key: 'id',
-    name: 'ID',
-    type: 'number',
-    read: true,
-    write: false
-  },
-  {
-    key: 'title',
-    name: '标题',
-    type: 'string',
-    read: true,
-    write: true
-  },
-  {
-    key: 'description',
-    name: '描述',
-    type: 'string',
-    read: true,
-    write: true
-  },
-  {
-    key: 'created_at',
-    name: '创建时间',
-    type: 'date',
-    read: true,
-    write: false
-  }
+[
+    {
+        "key": "id",
+        "name": "ID",
+        "type": "number",
+        "read": true,
+        "write": false
+    },
+    {
+        "key": "title",
+        "name": "标题",
+        "type": "string",
+        "read": true,
+        "write": true
+    },
+    {
+      "key": "price",
+      "name": "价格",
+      "type": "number",
+      "read": true,
+      "write": true
+    },
+    {
+        "key": "description",
+        "name": "描述",
+        "type": "string",
+        "read": true,
+        "write": true
+    },
+    {
+        "key": "created_at",
+        "name": "创建时间",
+        "type": "datetime",
+        "read": true,
+        "write": false
+    },
+    {
+        "key": "updated_at",
+        "name": "生效时间",
+        "type": "datetime",
+        "read": true,
+        "write": true
+    }
 ]
-
-
-

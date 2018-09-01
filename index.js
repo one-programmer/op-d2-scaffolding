@@ -36,7 +36,6 @@ const fields = [
 const options = {}
 const data = {fields, apiPath: '/api/todos'}
 
-const templates = ['templates/list.vue.ejs', 'templates/edit.vue.ejs']
 
 ejs.renderFile('templates/list.vue.ejs', data, options, function(err, str){
   const dirName = `src/pages/todo/`
