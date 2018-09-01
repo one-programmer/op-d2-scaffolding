@@ -1,6 +1,6 @@
 {
   "name": "op-d2-scaffolding",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "一个程序员 d2 CRUD脚手架",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "ejs": "^2.6.1",
     "mkdirp": "^0.5.1"
   },
-  "bin": { 
-    "op-crud": "./bin/op-crud.js" 
+  "bin": {
+    "op-crud": "./bin/op-crud.js"
   }
 }

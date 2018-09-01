@@ -3,7 +3,7 @@
 ## 安装
 
 ```bash
-npm install https://github.com/one-programmer/op-d2-scaffolding.git -g link
+sudo npm install https://github.com/one-programmer/op-d2-scaffolding.git -g link
 ```
 
 ## 如何使用

@@ -12,6 +12,10 @@
           <el-form-item label="<%= field.name %>">
             <el-input-number v-model="form.<%= field.key %>" ></el-input-number>
           </el-form-item>
+          <%_ } else if (field.type === 'boolean') { _%>
+          <el-form-item label="<%= field.name %>">
+            <el-switch v-model="form.<%= field.key %>"></el-switch>
+          </el-form-item>
           <%_ } else { _%>
           <el-form-item label="<%= field.name %>">
             <el-input v-model="form.<%= field.key %>"></el-input>

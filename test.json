@@ -40,5 +40,12 @@
         "type": "datetime",
         "read": true,
         "write": true
+    },
+    {
+        "key": "flag",
+        "name": "是否必选",
+        "type": "boolean",
+        "read": true,
+        "write": true
     }
 ]
