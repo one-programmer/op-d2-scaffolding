@@ -1,7 +1,7 @@
 {
-  "name": "d2-scaffolding",
-  "version": "1.0.0",
-  "description": "",
+  "name": "op-d2-scaffolding",
+  "version": "1.0.1",
+  "description": "一个程序员 d2 CRUD脚手架",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

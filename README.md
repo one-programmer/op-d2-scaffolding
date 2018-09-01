@@ -6,6 +6,26 @@
 npm install https://github.com/one-programmer/op-d2-scaffolding.git -g link
 ```
 
+## 如何使用
+
+```bash
+$ op-crud -h
+
+  Usage: op-crud [options]
+
+  Options:
+
+    -V, --version              output the version number
+    -n, --name <name>          name
+    -t, --title <title>        标题
+    -f, --filePath <filePath>  file path
+    -h, --help                 output usage information
+```
+
+```bash
+op-crud -n todos -t TODO -f /path/xxx.json
+```
+
 ## JSON数据格式
 
 - key 字段名

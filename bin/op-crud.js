@@ -41,7 +41,7 @@ templateData.forEach((template, index) => {
     path: '/${template.path}',
     name: '${program.name}-${template.type}',
     component: () => import('@/pages/${program.name}/${template.type}'),
-    meta: { meta, title: ${template.title} }
+    meta: { meta, title: '${template.title}' }
   }${ index === templateData.length ? '' : ',' }`)
 })
 
