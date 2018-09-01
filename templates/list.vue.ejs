@@ -37,10 +37,19 @@
           </el-table-column>
           <%_ fields.forEach(function(field){ _%>
             <%_ if (field.read) { _%>
+            <%_ if (field.type === 'boolean') { _%>
+            <el-table-column label="<%= field.name %>">
+              <template slot-scope="scope">
+                <d2-icon :name="scope.row.<%= field.key %> ? 'check': 'close'"/>
+              </template>
+            </el-table-column>
+
+            <%_ } else { _%>
             <el-table-column
               prop="<%= field.key %>"
               label="<%= field.name %>">
             </el-table-column>
+            <%_ } _%>
             <%_ } _%>
           <%_ }) _%>
           <el-table-column label="操作">
