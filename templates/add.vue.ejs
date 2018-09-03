@@ -50,7 +50,7 @@ export default {
     async onSubmit () {
       console.log('submit!')
       await this.$axios({
-        method: 'put',
+        method: 'post',
         url: `${this.apiPath}/${this.id}/`,
         data: this.form
       })
