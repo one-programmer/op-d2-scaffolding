@@ -111,8 +111,8 @@ export default {
         }
       }).then(result => {
         console.log('get list result', result)
-        this.dataList = result.data.results
-        this.total = result.data.total
+        this.dataList = result.results
+        this.total = result.total
       })
     },
     doBatchOption () {

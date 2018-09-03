@@ -17,7 +17,7 @@ console.log('program', program.name, program.filePath)
 
 const fields = JSON.parse(fs.readFileSync(program.filePath))
 const options = { }
-const data = {fields, apiPath: `/api/${program.name}`}
+const data = {fields, apiPath: `/api/admin/${program.name}`}
 
 
 const templateData = [
