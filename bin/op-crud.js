@@ -25,7 +25,7 @@ const templateData = [
   { type: 'add', path: `${program.name}-add`, title: `${program.title} 新增`, icon: 'plus' }
 ]
 
-const data = {fields, templateData, apiPath: `/api/${program.name}`}
+const data = {fields, templateData, apiPath: `/api/admin/${program.name}/`}
 
 templateData.forEach(template => {
   ejs.renderFile(`${__dirname}/../templates/${template.type}.vue.ejs`, data, options, function(err, str){

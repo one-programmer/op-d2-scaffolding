@@ -51,7 +51,7 @@ export default {
       console.log('submit!')
       await this.$axios({
         method: 'post',
-        url: `${this.apiPath}/${this.id}/`,
+        url: `${this.apiPath}`,
         data: this.form
       })
       this.$notify({
