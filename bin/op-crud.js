@@ -5,7 +5,7 @@ const fs = require('fs')
 const mkdirp = require('mkdirp')
 
 const program = require('commander')
- 
+
 program
   .version('0.1.0')
   .option('-n, --name <name>', 'name')
@@ -17,7 +17,6 @@ console.log('program', program.name, program.filePath)
 
 const fields = JSON.parse(fs.readFileSync(program.filePath))
 const options = { }
-const data = {fields, apiPath: `/api/admin/${program.name}`}
 
 
 const templateData = [
@@ -25,6 +24,8 @@ const templateData = [
   { type: 'edit', path: `${program.name}/:id/edit`, title: `${program.title} 编辑` },
   { type: 'add', path: `${program.name}-add`, title: `${program.title} 新增`, icon: 'plus' }
 ]
+
+const data = {fields, templateData, apiPath: `/api/${program.name}`}
 
 templateData.forEach(template => {
   ejs.renderFile(`${__dirname}/../templates/${template.type}.vue.ejs`, data, options, function(err, str){
