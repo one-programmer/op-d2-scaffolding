@@ -52,14 +52,14 @@ export default {
         method: 'get',
         url: `${this.apiPath}${this.id}/`
       })
-      this.form = result.data
+      this.form = result
     },
     async onSubmit () {
       console.log('submit!')
       await this.$axios({
         method: 'put',
         url: `${this.apiPath}${this.id}/`,
-        body: this.form
+        data: this.form
       })
       this.$notify({
         title: '成功',

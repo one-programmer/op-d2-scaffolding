@@ -4,7 +4,7 @@
   children: [
     <%_ templateData.forEach(function(template, index){ _%>
     <%_ if (template.icon) { _%>
-    { path: '/<%= template.path %>', title: '<%= template.title %>', icon: '<%= template.icon %>' }<%= index === templateData.length ? '' : ',' %>
+    { path: '<%= template.path %>', title: '<%= template.title %>', icon: '<%= template.icon %>' }<%= index === templateData.length ? '' : ',' %>
     <%_ } _%>
     <%_ }) _%>
   ]

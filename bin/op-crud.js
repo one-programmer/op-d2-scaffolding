@@ -20,9 +20,9 @@ const options = { }
 
 
 const templateData = [
-  { type: 'list', path: program.name, title: `${program.title} 列表`, icon: 'th-list' },
-  { type: 'edit', path: `${program.name}/:id/edit`, title: `${program.title} 编辑` },
-  { type: 'add', path: `${program.name}-add`, title: `${program.title} 新增`, icon: 'plus' }
+  { type: 'list', path: `/${program.name}`, title: `${program.title} 列表`, icon: 'th-list' },
+  { type: 'edit', path: `/${program.name}/:id/edit`, title: `${program.title} 编辑` },
+  { type: 'add', path: `/${program.name}-add`, title: `${program.title} 新增`, icon: 'plus' }
 ]
 
 const data = {fields, templateData, apiPath: `/api/admin/${program.name}/`}
