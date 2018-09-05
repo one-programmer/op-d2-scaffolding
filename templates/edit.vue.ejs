@@ -16,6 +16,17 @@
           <el-form-item label="<%= field.name %>">
             <el-switch v-model="form.<%= field.key %>"></el-switch>
           </el-form-item>
+          <%_ } else if (field.type === 'image') { _%>
+          <el-form-item label="<%= field.name %>">
+              <el-upload
+                class="avatar-uploader"
+                action="/api/upload/"
+                :show-file-list="false"
+                :on-success="<%= field.key %>Upload">
+                <img v-if="form.<%= field.key %>" :src="form.<%= field.key %>" class="avatar">
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+              </el-upload>
+          </el-form-item>
           <%_ } else { _%>
           <el-form-item label="<%= field.name %>">
             <el-input v-model="form.<%= field.key %>"></el-input>
@@ -67,7 +78,25 @@ export default {
         type: 'success'
       })
       this.$router.push({ path: '<%= templateData.find(template => template.type === "list").path %>' })
-    }
+    },
+    handleUploadSuccess (res, file) {
+      console.log('handleUploadSuccess', res, file)
+      this.form.image = res.results.url
+    },
+    <%_ fields.forEach(function(field) { _%> 
+    <%_ if (field.type === 'image') { _%>
+    <%= field.key %>Upload (res, file) {
+      console.log('handleUploadSuccess', res, file)
+      this.form.<%= field.key %> = res.results.url
+    },
+    <%_ } _%> 
+    <%_ }) _%> 
   }
 }
 </script>
+<style>
+.avatar {
+  width: 50px;
+  display: block;
+}
+</style>

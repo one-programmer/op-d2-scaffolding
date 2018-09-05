@@ -43,6 +43,12 @@
                 <d2-icon :name="scope.row.<%= field.key %> ? 'check': 'close'"/>
               </template>
             </el-table-column>
+            <%_ } else if (field.type === 'image') { _%>
+              <el-table-column label="<%= field.name %>">
+                <template slot-scope="scope">
+                  <img :src="scope.row.<%= field.key %>" style="width: 50px;">
+                </template>
+              </el-table-column>
 
             <%_ } else { _%>
             <el-table-column
@@ -83,7 +89,7 @@
 export default {
   data () {
     return {
-      config: { searchFlag: true, editFlag: true, deleteFlag: true },
+      config: { searchFlag: false, editFlag: true, deleteFlag: true },
       dataList: [],
       total: 0,
       pageSize: 20,

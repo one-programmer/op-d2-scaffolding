@@ -39,7 +39,7 @@ templateData.forEach(template => {
 console.log('routes:')
 templateData.forEach((template, index) => {
   console.log(`  {
-    path: '/${template.path}',
+    path: '${template.path}',
     name: '${program.name}-${template.type}',
     component: () => import('@/pages/${program.name}/${template.type}'),
     meta: { meta, title: '${template.title}' }
