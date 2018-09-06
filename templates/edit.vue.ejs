@@ -8,6 +8,14 @@
             <el-date-picker v-model="form.<%= field.key %>" type="datetime" placeholder="选择日期时间">
             </el-date-picker>
           </el-form-item>
+          <%_ } else if (field.choices && field.choices.length > 0) { _%>
+          <el-form-item label="<%= field.name %>">
+            <el-select v-model="form.<%= field.key %>" placeholder="请选择<%= field.name %>">
+              <%_ field.choices.forEach(function(choice) { _%>
+              <el-option label="<%= choice[1] %>" :value="<%= choice[0] %>"></el-option>
+              <%_ }) _%>
+            </el-select>
+          </el-form-item>
           <%_ } else if (field.type === 'number') { _%>
           <el-form-item label="<%= field.name %>">
             <el-input-number v-model="form.<%= field.key %>" ></el-input-number>
