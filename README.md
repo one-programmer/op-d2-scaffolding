@@ -30,7 +30,8 @@ op-crud -n todos -t TODO -f /path/xxx.json
 
 - key 字段名
 - name 中文含义
-- type 类型 [number|string|datetime|boolean]
+- type 类型 [number|string|datetime|boolean|image|file]
+- choices 选项
 - read 是否可读（默认在列表中展示）
 - write 是否可写（默认在编辑/新装中展示）
 

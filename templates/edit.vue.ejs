@@ -35,6 +35,22 @@
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
               </el-upload>
           </el-form-item>
+          <%_ } else if (field.type === 'file') { _%>
+          <el-form-item label="<%= field.name %>">
+            <el-upload
+              class="upload-demo"
+              drag
+              action="//up.qbox.me/"
+              :limit="1"
+              :data="<%= field.key %>Data"
+              :file-list="<%= field.key %>FileList"
+              :before-upload="<%= field.key %>HandleBeforeUpload"
+              :on-exceed="<%= field.key %>Exceed"
+              :on-success="<%= field.key %>UploadFile">
+              <i class="el-icon-upload"></i>
+              <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+            </el-upload>
+          </el-form-item>
           <%_ } else { _%>
           <el-form-item label="<%= field.name %>">
             <el-input v-model="form.<%= field.key %>"></el-input>
@@ -58,7 +74,13 @@ export default {
       form: {
         name: '',
         description: ''
-      }
+      },
+      <%_ fields.forEach(function(field) { _%>
+      <%_ if (field.type === 'file') { _%>
+      <%= field.key %>Data: {},
+      <%= field.key %>FileList: []
+      <%_ } _%>
+      <%_ }) _%>
     }
   },
   created () {
@@ -72,6 +94,11 @@ export default {
         url: `${this.apiPath}${this.id}/`
       })
       this.form = result
+      <%_ fields.forEach(function(field) { _%>
+      <%_ if (field.type === 'file') { _%>
+      this.<%= field.key %>FileList = [ { name: this.form.<%= field.key %>, url: this.form.<%= field.key %> } ]
+      <%_ } _%>
+      <%_ }) _%>
     },
     async onSubmit () {
       console.log('submit!')
@@ -96,6 +123,27 @@ export default {
     <%= field.key %>Upload (res, file) {
       console.log('handleUploadSuccess', res, file)
       this.form.<%= field.key %> = res.results.url
+    },
+    <%_ } else if (field.type === 'file') { _%> 
+    <%= field.key %>UploadFile (response, file, fileList) {
+      console.log('<%= field.key %>UploadFile', response, file, fileList)
+      this.form.<%= field.key %> = this.<%= field.key %>Data.url + response.key
+    },
+    async <%= field.key %>HandleBeforeUpload (file) {
+      const result = await this.$axios({
+        method: 'post',
+        url: '/api/qiniu_token/',
+        data: { name: file.name }
+      })
+      console.log('<%= field.key %>HandleBeforeUpload', result)
+      this.<%= field.key %>Data = result.results
+    },
+    <%= field.key %>Exceed () {
+      this.$notify({
+        title: '失败 ',
+        message: '已超过上传数量上限，如需修改，请删除原文件',
+        type: 'error'
+      })
     },
     <%_ } _%> 
     <%_ }) _%> 

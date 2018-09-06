@@ -49,7 +49,12 @@
                   <img :src="scope.row.<%= field.key %>" style="width: 50px;">
                 </template>
               </el-table-column>
-
+            <%_ } else if (field.type === 'file') { _%>
+              <el-table-column label="<%= field.name %>">
+                <template slot-scope="scope">
+                  <a v-if="scope.row.<%= field.key %>" :href="scope.row.<%= field.key %>" target="_blank">点击下载</a>
+                </template>
+              </el-table-column>
             <%_ } else { _%>
             <el-table-column
               prop="<%= field.key %>"
@@ -119,7 +124,7 @@ export default {
       }).then(result => {
         console.log('get list result', result)
         this.dataList = result.results
-        this.total = result.total
+        this.total = result.count
       })
     },
     doBatchOption () {
