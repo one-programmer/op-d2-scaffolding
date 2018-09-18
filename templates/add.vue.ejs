@@ -71,8 +71,11 @@ export default {
     return {
       apiPath: '<%= apiPath %>',
       form: {
-        name: '',
-        description: ''
+        <%_ fields.forEach(function(field) { _%>
+        <%_ if (field.write) { _%>
+        <%= field.key %>: '',
+        <%_ } _%>
+        <%_ }) _%>
       },
       <%_ fields.forEach(function(field) { _%>
       <%_ if (field.type === 'file') { _%>
